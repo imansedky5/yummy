@@ -1,0 +1,35 @@
+BEGIN;
+DROP TABLE IF EXISTS users, meals,orders, cart CASCADE;
+
+CREATE TABLE users (
+    id  SERIAL PRIMARY KEY NOT NULL,
+    first_name VARCHAR(100) NOT  NULL,
+    last_name VARCHAR(100) NOT  NULL,
+    email VARCHAR(250) NOT NULL UNIQUE,
+    password VARCHAR(250) NOT NULL,
+    role VARCHAR(100) DEFAULT 'user'
+);
+CREATE TABLE meals(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(250) NOT NULL,
+    ingrediants TEXT,
+    image TEXT,
+    price INTEGER
+);
+CREATE TABLE orders(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    meal_id INTEGER REFERENCES meals(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    price float,
+    quentity INTEGER,
+    address VARCHAR(250),
+    created_at TIMESTAMP DEFAULT CURRENT_DATE            
+);
+CREATE TABLE cart(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    meal_id INTEGER REFERENCES meals(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+COMMIT;
