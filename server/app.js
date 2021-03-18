@@ -1,8 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const router = require("./router");
-import {clientError, serverError} from './middlewares/error'
-
+const { clientError, serverError } = require("./middlewares/error");
 
 const app = express();
 
