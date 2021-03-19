@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development nodemon server",
-    "start":"cross-env NODE_ENV=production node server",
+    "start": "cross-env NODE_ENV=production node server",
     "kill": "fuser -k 5000/tcp",
     "client": "cd client && npm start",
-    "server":"cd server && npm run dev"
+    "server": "cd server && npm run dev"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,11 @@
   },
   "homepage": "https://github.com/imansedky5/yummy#readme",
   "dependencies": {
+    "@hapi/boom": "^9.1.2",
+    "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "joi": "^17.4.0",
     "pg": "^8.5.1"
   },
   "devDependencies": {
