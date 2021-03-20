@@ -1,3 +1,4 @@
-const {signupSchema} = require("./validation");
+const { signupSchema, loginSchema } = require("./validation");
+const { signToken, verifyToken } = require("../utils/jwt");
 
-module.exports = { signupSchema };
+module.exports = { signupSchema, loginSchema, signToken, verifyToken };

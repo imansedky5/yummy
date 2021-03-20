@@ -1,9 +1,18 @@
 const router = require("express").Router();
-const { signupHandler } = require("./controller/index")
+const isAuth = require("./middlewares/auth");
 
-router.get("/", (req, res) => {
+const {
+  signupHandler,
+  loginHandler,
+  logoutHandler,
+} = require("./controller/index");
+
+router.post("/signup", signupHandler);
+router.post("/login", loginHandler);
+router.use(isAuth);
+router.get("/hi", (req, res) => {
   res.send("hi");
 });
-router.post("/signup", signupHandler)
+router.get("/logout", logoutHandler);
 
 module.exports = router;
