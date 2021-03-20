@@ -13,4 +13,15 @@ const signToken = (payload) => {
     });
   });
 };
-module.exports = { signToken };
+const verifyToken = (token) => {
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, SECRET_KEY, (err, decoded) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(decoded);
+      }
+    });
+  });
+};
+module.exports = { signToken, verifyToken };
